@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+  <link rel="import" href="/bower_components/polymer/polymer.html">
+  <link rel="import" href="/bower_components/paper-item/paper-item.html">
+  <link rel="import" href="/bower_components/paper-button/paper-button.html">
+  <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="/bower_components/iron-icons/iron-icons.html"> 
+  <link rel="import" href="/bower_components/iron-icons/image-icons.html"> 
+  <link rel="import" href="/bower_components/iron-icons/hardware-icons.html"> 
+  <link rel="import" href="/bower_components/iron-icons/social-icons.html"> 
+  <link rel="import" href="/bower_components/iron-icon/iron-icon.html"> 
+  <link rel="import" href="/bower_components/iron-image/iron-image.html">
+  <link rel="import" href="/bower_components/paper-card/paper-card.html">
+  <link rel="import" href="/bower_components/paper-ripple/paper-ripple.html">
+
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+
+
+  <title>Pushbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+
+<!-- 
+        background: url("MBackground.jpg") no-repeat center center fixed;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+
+ -->
+  <style>
+
+      html, body {
+        margin: 0;
+        height: 100%;
+        width:100%;
+        font-family: 'Roboto Light', sans-serif;
+        color:#fff;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+       
+        background: url("MBackground.jpg") no-repeat center center fixed;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+
+      }
+
+      #paper {
+        background-color: #212121;
+        max-width: 500px;
+      }
+
+      .paperWrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        display: flex;
+                display: -webkit-flex;
+
+        flex-direction: column;
+      }
+
+      .card {
+        position: relative;
+        margin-top:20px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+
+
+
+        min-width: 200px;
+        width: 332px;
+
+        height: 120px;
+        background-color: #455A64;
+      }
+
+      .cardWrapper {
+        position: relative;
+        height: 100%;
+
+        padding-left: 15px;
+        padding-right: 15px;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .topWrapper {
+        position: relative;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+     }
+     .label {
+        font-size: 40px;
+        position: relative;
+        margin-top: 5px;
+        color:#fff;
+        font-family: 'Roboto Light', sans-serif;
+        width: 120px;
+      }
+      .topSpacer {
+        position: relative;
+          -webkit-flex: 1;
+          flex: 1;
+      }
+      .topIconWrapper {
+        min-width: 0px;
+        min-height: 0px;
+
+        display: -webkit-flex;
+        display:         flex;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+      }
+
+      .bottomWrapper {
+        position: relative;
+        height: 60px;
+
+        display: flex;
+        flex-direction: row;
+      }
+
+      .buttonSpacer {
+        position: relative;
+          -webkit-flex: 1;
+          flex: 1;
+      }
+
+      .buttonWrapper {
+        position: relative;
+        float: right;
+      }
+
+      .iconWrapper{
+        -webkit-flex: 1;
+        flex: 1;
+
+        min-width: 0px;
+        min-height: 0px;
+
+        display: -webkit-flex;
+        display:         flex;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+      }
+
+
+
+
+  </style>
+
+
+
+  <script>
+  function command (qs){
+    var host = "http://nicknothom.com:3001?";
+    var url = host + qs;
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", url, true ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+  }
+  </script>
+
+
+  <style is="custom-style">
+
+  .buttons {
+    --iron-icon-height: 40px;
+    --iron-icon-width: 40px;
+
+    color:#bebebe;
+
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .cardIcon {
+    --iron-icon-height: 40px;
+    --iron-icon-width: 40px;
+
+    padding:8px;
+    margin-right: 5px;
+  }
+
+  </style>
+
+
+</head>
+
+<body fullbleed vertical layout unresolved>
+
+  <paper-card id="paper" elevation="5">
+  <div class="paperWrapper">
+
+
+
+
+    <paper-card class="card" label="Item">
+
+    <paper-ripple>
+    </paper-ripple>
+
+    <div class="cardWrapper">
+
+      <div class="topWrapper">
+
+        <div class="label">
+          Lights
+        </div>
+
+        <div class="topSpacer"></div>
+
+        <div class="topIconWrapper">
+          <iron-icon class="cardIcon" icon="image:wb-incandescent">
+          </iron-icon>
+        </div><!-- topIconWrapper-->
+      </div><!-- topWrapper-->
+
+      <div class="bottomWrapper">
+
+        <div class="buttonSpacer"></div>
+
+        <div class="buttonWrapper">
+            <paper-icon-button class="buttons" icon="icons:cancel" onclick="command('a=1&c=1');">
+            </paper-icon-button>
+            <paper-icon-button class="buttons" icon="icons:check-circle" onclick="command('a=0&c=0');">
+            </paper-icon-button>
+        </div><!-- buttonWrapper-->
+      </div><!-- bottomWrapper-->
+
+    </div><!-- cardWrapper-->
+    </paper-card><!-- card-->
+    
+
+
+
+
+    <paper-card class="card" label="Item">
+
+    <paper-ripple>
+    </paper-ripple>
+
+    <div class="cardWrapper">
+
+      <div class="topWrapper">
+
+        <div class="label">
+          Fan
+        </div>
+
+        <div class="topSpacer"></div>
+
+        <div class="topIconWrapper">
+          <iron-icon class="cardIcon" icon="hardware:toys">
+          </iron-icon>
+        </div><!-- topIconWrapper-->
+      </div><!-- topWrapper-->
+
+      <div class="bottomWrapper">
+
+        <div class="buttonSpacer"></div>
+
+        <div class="buttonWrapper">
+            <paper-icon-button class="buttons" icon="icons:cancel" onclick="command('g=1');">
+            </paper-icon-button>        
+            <paper-icon-button class="buttons" icon="icons:check-circle" onclick="command('g=0');">
+            </paper-icon-button>
+
+        </div><!-- buttonWrapper-->
+      </div><!-- bottomWrapper-->
+
+    </div><!-- cardWrapper-->
+    </paper-card><!-- card-->
+
+
+
+
+
+
+
+    <paper-card class="card" label="Item">
+
+    <paper-ripple>
+    </paper-ripple>
+
+    <div class="cardWrapper">
+
+      <div class="topWrapper">
+
+        <div class="label">
+          Candle
+        </div>
+
+        <div class="topSpacer"></div>
+
+        <div class="topIconWrapper">
+          <iron-icon class="cardIcon" icon="social:whatshot">
+          </iron-icon>
+        </div><!-- topIconWrapper-->
+      </div><!-- topWrapper-->
+
+      <div class="bottomWrapper">
+
+        <div class="buttonSpacer"></div>
+
+        <div class="buttonWrapper">
+            <paper-icon-button class="buttons" icon="icons:cancel" onclick="command('h=1');">
+            </paper-icon-button>
+            <paper-icon-button class="buttons" icon="icons:check-circle" onclick="command('h=0');">
+            </paper-icon-button>
+
+        </div><!-- buttonWrapper-->
+      </div><!-- bottomWrapper-->
+
+    </div><!-- cardWrapper-->
+    </paper-card><!-- card-->
+
+
+
+
+
+    <paper-card class="card" label="Item">
+
+    <paper-ripple>
+    </paper-ripple>
+
+    <div class="cardWrapper">
+
+      <div class="topWrapper">
+
+        <div class="label">
+          Purifier
+        </div>
+
+        <div class="topSpacer"></div>
+
+        <div class="topIconWrapper">
+          <iron-icon class="cardIcon" icon="hardware:memory">
+          </iron-icon>
+        </div><!-- topIconWrapper-->
+      </div><!-- topWrapper-->
+
+      <div class="bottomWrapper">
+
+        <div class="buttonSpacer"></div>
+
+        <div class="buttonWrapper">
+            <paper-icon-button class="buttons" icon="icons:cancel" onclick="command('e=1');">
+            </paper-icon-button>
+            <paper-icon-button class="buttons" icon="icons:check-circle" onclick="command('e=0');">
+            </paper-icon-button>
+
+        </div><!-- buttonWrapper-->
+      </div><!-- bottomWrapper-->
+
+    </div><!-- cardWrapper-->
+    </paper-card><!-- card-->
+
+
+
+  </div>
+  </paper-card>
+
+</body>
+</html>
